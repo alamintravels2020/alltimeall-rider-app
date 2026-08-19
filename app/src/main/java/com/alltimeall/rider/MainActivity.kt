@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     private var filePathCallback: ValueCallback<Array<Uri>>? = null
     private var cameraImageUri: Uri? = null
     private var doubleBackToExitPressedOnce = false
+    private var isToolbarHidden = false
 
     private val targetUrl = "https://alltimeall.com/rider"
 
@@ -64,6 +65,15 @@ class MainActivity : AppCompatActivity() {
         // Setup Toolbar
         setSupportActionBar(binding.topAppBar)
         supportActionBar?.setDisplayShowTitleEnabled(true)
+
+        // Click top bar title to navigate to Home page instantly
+        binding.topAppBar.setOnClickListener {
+            if (NetworkUtils.isNetworkAvailable(this)) {
+                binding.offlineContainer.visibility = View.GONE
+                binding.webView.visibility = View.VISIBLE
+                binding.webView.loadUrl(targetUrl)
+            }
+        }
 
         // Setup Back Button Callback
         setupBackPressHandler()
@@ -126,6 +136,32 @@ class MainActivity : AppCompatActivity() {
 
         val defaultUserAgent = webSettings.userAgentString
         webSettings.userAgentString = "$defaultUserAgent AllTimeAllRiderAndroidApp/1.0"
+
+        // Smart Auto-Hiding Top Bar on Scroll
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            binding.webView.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
+                val diff = scrollY - oldScrollY
+                if (diff > 12 && !isToolbarHidden && scrollY > 80) {
+                    isToolbarHidden = true
+                    binding.topAppBar.animate()
+                        .translationY(-binding.topAppBar.height.toFloat())
+                        .setDuration(220)
+                        .start()
+                } else if (diff < -12 && isToolbarHidden) {
+                    isToolbarHidden = false
+                    binding.topAppBar.animate()
+                        .translationY(0f)
+                        .setDuration(220)
+                        .start()
+                } else if (scrollY <= 10 && isToolbarHidden) {
+                    isToolbarHidden = false
+                    binding.topAppBar.animate()
+                        .translationY(0f)
+                        .setDuration(180)
+                        .start()
+                }
+            }
+        }
 
         binding.webView.webViewClient = object : WebViewClient() {
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
@@ -346,6 +382,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.action_login -> {
+                if (NetworkUtils.isNetworkAvailable(this)) {
+                    binding.offlineContainer.visibility = View.GONE
+                    binding.webView.visibility = View.VISIBLE
+                    binding.webView.loadUrl(targetUrl)
+                } else {
+                    showOfflineScreen()
+                }
+                true
+            }
             R.id.action_refresh -> {
                 if (NetworkUtils.isNetworkAvailable(this)) {
                     binding.offlineContainer.visibility = View.GONE

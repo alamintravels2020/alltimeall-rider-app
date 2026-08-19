@@ -8,16 +8,18 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
-    <!-- Top App Bar -->
+    <!-- Slim Smart Top App Bar (48dp slim height) -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
         android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="48dp"
         android:background="@color/brand_orange"
-        android:elevation="4dp"
+        android:elevation="2dp"
+        android:minHeight="48dp"
         app:title="@string/app_name"
         app:titleTextColor="@color/white"
         app:titleCentered="false"
+        app:titleTextAppearance="@style/SlimToolbarTitle"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

@@ -2,13 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/action_login"
+        android:icon="@drawable/ic_account"
+        android:title="Login / Account"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/action_refresh"
         android:icon="@drawable/ic_refresh"
         android:title="Refresh"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_share"
         android:icon="@drawable/ic_share"
         android:title="Share"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 </menu>
