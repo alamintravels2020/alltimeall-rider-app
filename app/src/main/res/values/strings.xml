@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">alltimeall Rider</string>
+    <string name="website_url">https://alltimeall.com/rider</string>
+    
+    <!-- UI Strings -->
+    <string name="no_internet_title">ইন্টারনেট সংযোগ নেই</string>
+    <string name="no_internet_desc">রাইডার অ্যাপ ব্যবহারের জন্য সক্রিয় ইন্টারনেট সংযোগ প্রয়োজন। অনুগ্রহ করে পুনরায় চেষ্টা করুন।</string>
+    <string name="btn_retry">পুনরায় চেষ্টা করুন</string>
+    
+    <string name="share_app_title">alltimeall Rider অ্যাপ শেয়ার করুন</string>
+    <string name="share_app_text">alltimeall রাইডার অ্যাপ ব্যবহার করুন: https://alltimeall.com/rider</string>
+    
+    <string name="exit_prompt">রাইডার অ্যাপ থেকে বের হতে আবার চাপুন</string>
+    <string name="file_chooser_title">ডেলিভারির ছবি বা ফাইল আপলোড করুন</string>
+    <string name="location_permission_needed">ডেলিভারি লোকেশন ট্র্যাক করতে লোকেশন পারমিশন প্রয়োজন</string>
+</resources>

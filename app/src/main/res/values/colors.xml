@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand Primary Colors -->
+    <color name="brand_orange">#F97316</color>
+    <color name="brand_orange_dark">#EA580C</color>
+    <color name="brand_orange_light">#FFEDD5</color>
+    
+    <!-- UI Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray_100">#F3F4F6</color>
+    <color name="gray_600">#4B5563</color>
+    <color name="gray_800">#1F2937</color>
+    <color name="gray_900">#111827</color>
+    
+    <!-- Status & Navigation -->
+    <color name="status_bar_color">#EA580C</color>
+</resources>
